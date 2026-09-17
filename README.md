@@ -12,14 +12,14 @@ Features `V1`–`V28` are the result of a PCA transformation (for confidentialit
 
 ## Approach
 
-1. **Explore & inspect** the data — shape, dtypes, null check via `data.info()`.
+1. **Explore & inspect** the data , shape, dtypes, null check via `data.info()`.
 2. **Split** into train/test sets (`test_size=0.33`) before any model fitting.
 3. **Compare multiple models** with 10-fold cross-validation on accuracy:
    - Logistic Regression (`class_weight='balanced'`)
    - K-Nearest Neighbors
    - Gaussian Naive Bayes
    - Decision Tree (`class_weight='balanced'`)
-4. **Evaluate with `classification_report`** (precision/recall/F1), since accuracy alone is misleading on imbalanced data — a model predicting "not fraud" every time would still score ~99.8% accuracy.
+4. **Evaluate with `classification_report`** (precision/recall/F1), since accuracy alone is misleading on imbalanced data , a model predicting "not fraud" every time would still score ~99.8% accuracy.
 5. **Select Decision Tree** as the best-performing model based on its balance of precision and recall on the minority (fraud) class.
 6. **Tune with `GridSearchCV`**, optimizing for **F1 score** (not accuracy) across `max_depth`, `min_samples_split`, `min_samples_leaf`, `criterion`, and `max_features`.
 7. **Final evaluation** on the held-out test set with the tuned model.
